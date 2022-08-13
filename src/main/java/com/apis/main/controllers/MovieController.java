@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/movie")
 public class MovieController {
@@ -28,6 +30,16 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(movie, HttpStatus.OK);
+    }
+
+    @GetMapping("/findAll")
+    public ResponseEntity<List<Movie>> findAllMovies(@RequestParam("movie") String movieName){
+        List<Movie> movies = movieService.getAllMovies(movieName);
+
+        if (movies == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(movies, HttpStatus.OK);
     }
 
 
