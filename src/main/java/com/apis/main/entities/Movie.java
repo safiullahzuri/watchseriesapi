@@ -58,4 +58,13 @@ public class Movie {
     public void setImageSource(String imageSource) {
         this.imageSource = imageSource;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", imageSource='" + imageSource + '\'' +
+                '}';
+    }
 }
